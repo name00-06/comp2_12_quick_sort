@@ -12,6 +12,8 @@ void swap(item* a,item* b)
 
 item* partition(item* L, item* R)
 {
+	item* pivot = L + (R - L) / 2;
+	swap(pivot, R);
 	item* pivot = R;
 	item* i = (L - 1);
 
