@@ -14,7 +14,7 @@ item* partition(item* L, item* R)
 {
 	item* pivot = L + (R - L) / 2;
 	swap(pivot, R);
-	item* pivot = R;
+	pivot = R;
 	item* i = (L - 1);
 
 	for (item* j = L; j <= R - 1; j++)
