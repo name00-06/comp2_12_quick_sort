@@ -3,10 +3,55 @@
 
 #include "../include/lib_func.h"
 
+void swap(item* a,item* b)
+{
+	item t = *a;
+	*a = *b;
+	*b = t;
+}
+
+item* partition(item* L, item* R)
+{
+	item* pivot = R;
+	item* i = (L - 1);
+
+	for (item* j = L; j <= R - 1; j++)
+	{
+		if (j->key <= pivot->key)
+		{
+			i++;
+			swap(i, j);
+		}
+	}
+
+	swap(i + 1, R);
+	return (i + 1);
+}
+
+void quick_sort(item* L, item* R)
+{
+	if (L < R)
+	{
+		item* pivot = partition(L,R);
+		quick_sort(L, pivot - 1);
+		quick_sort(pivot + 1, R);
+	}
+}
+
 // クイックソート(引数が不適切であればfalseを返す)
 bool quick_sort(item* begin, const item* end)
 {
 	// ToDo: クイックソートで並び替えてください
+	if (begin == NULL || end == NULL)
+	{
+		return false;
+	}
+	if (end < begin)
+	{
+		return false;
+	}
 
-	return false;
+	quick_sort(begin, const_cast<item*>(end - 1));
+
+	return true;
 }
